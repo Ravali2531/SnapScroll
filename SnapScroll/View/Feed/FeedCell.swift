@@ -31,15 +31,14 @@ struct FeedCell: View {
                 .scaledToFill()
                 .frame(maxHeight: 440)
                 .clipped()
-                .cornerRadius(18)
             
             //action buttons - like, comment, share
-            HStack(spacing: 8){
+            HStack(spacing: 16){
                 Button(action: {}, label: {
                     Image(systemName: "heart")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
                         .font(.system(size: 20))
                         .padding(5)
                 })
@@ -48,7 +47,7 @@ struct FeedCell: View {
                     Image(systemName: "bubble.right")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
                         .padding(5)
                         .font(.system(size: 20))
                 })
@@ -57,25 +56,31 @@ struct FeedCell: View {
                     Image(systemName: "paperplane")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
                         .padding(5)
                         .font(.system(size: 20))
                 })
             }.foregroundColor(.black)
             
+            //likes message
+            Text("3 likes")
+                .font(.system(size: 14, weight: .semibold))
+                .padding(.leading, 8)
+                .padding(.bottom, 2)
             
             //caption
             HStack{
                 Text("Beaching")
                     .font(.system(size: 14, weight: .semibold)) +
-                Text("Live in the moment because this too shall pass, have fun and love.")
+                Text(" Live in the moment because this too shall pass, have fun and love.")
                     .font(.system(size: 15))
-            }
+            }.padding(.horizontal, 8)
             
             Text("2d")
                 .font(.system(size: 14))
                 .foregroundColor(.gray)
-                .padding(.top)
+                .padding(.top, -2)
+                .padding(.leading, 8)
             
         }.padding()
     }
