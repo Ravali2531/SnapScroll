@@ -1,18 +1,21 @@
 //
-//  LoginPage.swift
+//  SignUpPage.swift
 //  SnapScroll
 //
-//  Created by Naveen Reddy Nagulapally on 2024-10-21.
+//  Created by Naveen Reddy Nagulapally on 2024-10-30.
 //
 
 import SwiftUI
 
-struct LoginPage: View {
+struct SignUpPage: View {
+    
     
     @State  private var email = ""
     @State private  var password = ""
-    
-   
+    @State private var UserName = ""
+    @State private var FullName = ""
+    @Environment(\.presentationMode) var mode
+ 
     
     var body: some View {
         NavigationView{
@@ -22,10 +25,7 @@ struct LoginPage: View {
                     
                 
                 VStack(spacing: 80){
-                    Text("SnapScroll")
-                        .font(.custom("HelveticaNeue-Bold", size: 32))
-                        .foregroundColor(.white)
-                        .padding(.top, 50)
+                   
                        
                   
                     VStack(spacing : 20){
@@ -35,6 +35,23 @@ struct LoginPage: View {
                             .cornerRadius(10)
                             .foregroundColor(.white)
                             .padding(.horizontal,32)
+                        
+                        CustomTextField(text: $UserName, placeholder: Text("User Name"), imageName: "person")
+                            .padding()
+                            .background(Color(.init(white: 1, alpha: 0.15)))
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                            .padding(.horizontal,32)
+                        
+                        CustomTextField(text: $FullName, placeholder: Text("Full Name"), imageName: "person")
+                            .padding()
+                            .background(Color(.init(white: 1, alpha: 0.15)))
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                            .padding(.horizontal,32)
+                        
+                        
+                        
                             
                          
                         CustomSecureField(text:$password,placeholder:Text("password"),imageName: "lock")
@@ -44,21 +61,11 @@ struct LoginPage: View {
                             .foregroundColor(.white)
                             .padding(.horizontal,32)
                     }
-                    
-                    HStack {
-                        Spacer()
-                          Button(action: {}, label: {
-                              Text("Forget Password?")
-                                  .font(.system(size: 13,weight: .semibold))
-                                  .foregroundColor(.white)
-                                  .padding(.top)
-                                  .padding(.trailing,28)
-                          })
-                         
-                      }
+                   
                     VStack{
+                       
                         Button(action: {}, label: {
-                            Text("Login")
+                            Text("Sign Up")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width:360,height:50)
@@ -70,17 +77,22 @@ struct LoginPage: View {
                         })
                         
                         
-                        NavigationLink(destination:SignUpPage().navigationBarBackButtonHidden(true),
-                                       label: {
-                            
+                        Button(action: { mode.wrappedValue.dismiss()},
+                               label: {
                             HStack{
-                                Text("Dont have an account?")
+                                Text("Already have an account?")
                                     .font(.system(size: 14,weight: .semibold))
-                                Text("Sign Up")
+                                Text("Login")
                                     .font(.system(size: 14,weight:.semibold))
                             }.foregroundColor(.white)
                         })
+                            
+
+                    
                     }
+                  
+                        
+                   
                                     
                     
                
@@ -97,5 +109,5 @@ struct LoginPage: View {
 }
 
 #Preview {
-    LoginPage()
+    SignUpPage()
 }
